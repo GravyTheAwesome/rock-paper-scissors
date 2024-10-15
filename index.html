@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            let random_int = Math.floor(Math.random() * 3);
+
+            if (random_int == 0) {
+                return 'rock';
+            } else if (random_int == 1) {
+                return 'paper';
+            } else {
+                return 'scissors';
+            }
+        }
+
+        function getHumanChoice() {
+            let humanChoice = prompt('Rock, paper, or scissors?');
+
+            if (humanChoice.toLowerCase() == 'rock' || humanChoice.toLowerCase() == 'paper' || humanChoice.toLowerCase() == 'scissors') {
+                return humanChoice.toLowerCase();
+            } else {
+                return '';
+            }
+        }
+
+        console.log(getHumanChoice());
+    </script>
+</body>
+</html>
