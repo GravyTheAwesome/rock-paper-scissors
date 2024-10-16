@@ -10,6 +10,7 @@
 
         function getComputerChoice() {
             let random_int = Math.floor(Math.random() * 3);
+            console.log(random_int);
 
             if (random_int == 0) {
                 return 'rock';
@@ -52,9 +53,11 @@
             } else if (humanChoice == 'scissors' && computerChoice == 'paper') {
                 console.log('You win, scissors beats paper');
                 humanScore++;
+            } else if (humanChoice == computerChoice) {
+                console.log('Tie!')
             } else {
                 console.log('Unknown values, please try again')
-            }          
+            }        
         }
         
         let humanScore = 0;
