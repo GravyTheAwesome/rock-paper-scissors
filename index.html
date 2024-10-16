@@ -68,17 +68,30 @@
                 }        
             }
 
+            function getGameResults(humanScore, computerScore) {
+                console.log(`---------------------------------`)
+                console.log('Scores:');
+                console.log(`You: ${humanScore}`);
+                console.log(`Computer: ${computerScore}`);
+
+                if (humanScore > computerScore) {
+                    console.log('You win!');
+                } else if (computerScore > humanScore) {
+                    console.log(`Computer wins!`);
+                } else {
+                    console.log(`It's a tie!`);
+                }
+            }
+
             for (let i = 0; i < 5; i++) {
                 humanChoice = getHumanChoice();
                 computerChoice = getComputerChoice();
 
                 playRound(humanChoice, computerChoice);
             }
-            
-            console.log(`---------------------------------`)
-            console.log('Scores:');
-            console.log(`You: ${humanScore}`);
-            console.log(`Computer: ${computerScore}`);
+
+            getGameResults(humanScore, computerScore);       
+
         }
         
         playGame();
