@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RPS</title>
 </head>
 <body>
     <script>
@@ -31,8 +31,8 @@
         }
 
         function playRound(humanChoice, computerChoice) {
-            humanChoice = humanChoice.lower();
-            computerChoice = computerChoice.lower();
+            humanChoice = humanChoice.toLowerCase();
+            computerChoice = computerChoice.toLowerCase();
 
             if (humanChoice == 'rock' && computerChoice == 'paper') {
                 console.log('You lose, paper beats rock');
@@ -60,6 +60,10 @@
         let humanScore = 0;
         let computerScore = 0;
 
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
     </script>
 </body>
 </html>
