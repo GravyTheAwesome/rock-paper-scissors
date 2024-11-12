@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>RPS</title>
 </head>
 <body>
-    <div id="display"></div>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-
-    <div id="humanScore">You: 0</div>
-    <div id="computerScore">Computer: 0</div>
+    <div class="ui-container">
+        <div id="display">Rock, Paper, Scissors</div>
+        <div class="ui-buttons">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <div class="ui-scores">
+            <div id="humanScore">You: 0</div>
+            <div id="computerScore">Computer: 0</div>       
+        </div>
+    </div>
+    
     <script src="code.js"></script>
 </body>
 </html>

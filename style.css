@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.ui-container {
+    background-color: lightblue;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 8px;
+    align-items: center;
+    padding: 12px;
+    border: 3px solid orange;
+}
+
+#display {
+    width: 288px;
+    display: flex;
+    height: 30px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui-scores {
+    display: flex;
+    gap: 10px;
+}
+
+.ui-scores div {
+    background-color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
