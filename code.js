@@ -1,19 +1,23 @@
-function getComputerChoice() {
-    let random_int = Math.floor(Math.random() * 3);
 
-    if (random_int == 0) {
-        return 'rock';
-    } else if (random_int == 1) {
-        return 'paper';
-    } else {
-        return 'scissors';
-    }
-}
 
 function playGame() {
+
+    function getComputerChoice() {
+        let random_int = Math.floor(Math.random() * 3);
+
+        if (random_int == 0) {
+            return 'rock';
+        } else if (random_int == 1) {
+            return 'paper';
+        } else {
+            return 'scissors';
+        }
+    }
+
     let humanScore = 0;
     let computerScore = 0;
-    let computerChoice;
+    let computerChoice = getComputerChoice();
+    let roundCount = 0;
 
     const rock = document.querySelector('#rock');
     const paper = document.querySelector('#paper');
@@ -22,13 +26,26 @@ function playGame() {
     const humanScoreDisplay = document.querySelector('#humanScore');
     const computerScoreDisplay = document.querySelector('#computerScore');
 
-    console.log(humanScoreDisplay.innerHTML);
-
     function updateScoreDisplay(humanScore, computerScore) {
         humanScoreDisplay.innerHTML = `You: ${humanScore}`;
         computerScoreDisplay.innerHTML = `Computer: ${computerScore}`;
     }
 
+    function checkRoundOver() {
+        if (roundCount > 4) {
+            getGameResults(humanScore, computerScore);
+            if (humanScore > computerScore) {
+                display.innerHTML = 'You win!'
+            } else if (computerScore > humanScore) {
+                display.innerHTML = 'Computer wins!'
+            } else {
+                display.innerHTML = 'It\'s a tie!'
+            }
+        } else {
+            updateScoreDisplay(humanScore, computerScore);
+            roundCount++;
+        }
+    }
 
     function getGameResults(humanScore, computerScore) {
         console.log(`---------------------------------`)
@@ -46,25 +63,26 @@ function playGame() {
     }
 
     function playRound(computerChoice) {
-        computerChoice = computerChoice.toLowerCase();
 
         rock.addEventListener('click', function () {
             switch (computerChoice) {
                 case 'paper':
                     display.innerHTML = '\nYou lose, paper beats rock';
                     computerScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'scissors':
-                    display.innerHTML = '\nYou win, rock beats scissors';
+                    display.innerHTML = '\nYou win, rock beats scissors'
                     humanScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'rock':
                     display.innerHTML = '\nTie!';
+                    computerChoice = getComputerChoice();
                     break;
             }
 
-            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
-            getGameResults(humanScore, computerScore);
+            checkRoundOver();
         });   
         
         paper.addEventListener('click', function () {
@@ -72,18 +90,20 @@ function playGame() {
                 case 'scissors':
                     display.innerHTML = '\nYou lose, scissors beats paper';
                     computerScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'rock':
                     display.innerHTML = '\nYou win, paper beats rock';
                     humanScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'paper':
                     display.innerHTML = '\nTie!';
+                    computerChoice = getComputerChoice();
                     break;
             }
 
-            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
-            getGameResults(humanScore, computerScore);
+            checkRoundOver();
         });    
         
         scissors.addEventListener('click', function () {
@@ -91,24 +111,23 @@ function playGame() {
                 case 'rock':
                     display.innerHTML = '\nYou lose, rock beats scissors';
                     computerScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'paper':
                     display.innerHTML = '\nYou win, scissors beats paper';
                     humanScore++;
+                    computerChoice = getComputerChoice();
                     break;
                 case 'scissors':
                     display.innerHTML = '\nTie!';
+                    computerChoice = getComputerChoice();
                     break;
             }
 
-            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
-            getGameResults(humanScore, computerScore);
+            checkRoundOver();
         });  
         
     }
-
-
-    computerChoice = getComputerChoice();
 
     playRound(computerChoice);   
     
