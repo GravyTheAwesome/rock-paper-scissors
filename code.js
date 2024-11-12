@@ -18,7 +18,16 @@ function playGame() {
     const rock = document.querySelector('#rock');
     const paper = document.querySelector('#paper');
     const scissors = document.querySelector('#scissors');
-    const display = document.querySelector('.display');
+    const display = document.querySelector('#display');
+    const humanScoreDisplay = document.querySelector('#humanScore');
+    const computerScoreDisplay = document.querySelector('#computerScore');
+
+    console.log(humanScoreDisplay.innerHTML);
+
+    function updateScoreDisplay(humanScore, computerScore) {
+        humanScoreDisplay.innerHTML = `You: ${humanScore}`;
+        computerScoreDisplay.innerHTML = `Computer: ${computerScore}`;
+    }
 
 
     function getGameResults(humanScore, computerScore) {
@@ -54,6 +63,7 @@ function playGame() {
                     break;
             }
 
+            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
             getGameResults(humanScore, computerScore);
         });   
         
@@ -72,6 +82,7 @@ function playGame() {
                     break;
             }
 
+            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
             getGameResults(humanScore, computerScore);
         });    
         
@@ -90,6 +101,7 @@ function playGame() {
                     break;
             }
 
+            updateScoreDisplay(humanScore, computerScore, humanScoreDisplay, computerScoreDisplay);
             getGameResults(humanScore, computerScore);
         });  
         
