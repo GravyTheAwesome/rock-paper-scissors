@@ -12,7 +12,7 @@ function playGame() {
         } else {
             return 'scissors';
         }
-    }
+    };
 
     let humanScore = 0;
     let computerScore = 0;
@@ -29,7 +29,7 @@ function playGame() {
     function updateScoreDisplay(humanScore, computerScore) {
         humanScoreDisplay.innerHTML = `You: ${humanScore}`;
         computerScoreDisplay.innerHTML = `Computer: ${computerScore}`;
-    }
+    };
 
     function checkRoundOver() {
         if (roundCount > 4) {
@@ -44,8 +44,18 @@ function playGame() {
         } else {
             updateScoreDisplay(humanScore, computerScore);
             roundCount++;
-        }
-    }
+        };
+    };
+
+    function incrementScore(scorer) {
+        if (roundCount < 4) {
+            if (scorer == computerScore) {
+                computerScore++;
+            } else {
+                humanScore++;
+            }
+        };
+    };
 
     function getGameResults(humanScore, computerScore) {
         console.log(`---------------------------------`)
@@ -59,8 +69,8 @@ function playGame() {
             console.log(`Computer wins!`);
         } else {
             console.log(`It's a tie!`);
-        }
-    }
+        };
+    };
 
     function playRound(computerChoice) {
 
@@ -68,12 +78,12 @@ function playGame() {
             switch (computerChoice) {
                 case 'paper':
                     display.innerHTML = '\nYou lose, paper beats rock';
-                    computerScore++;
+                    incrementScore(computerScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'scissors':
                     display.innerHTML = '\nYou win, rock beats scissors'
-                    humanScore++;
+                    incrementScore(humanScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'rock':
@@ -89,12 +99,12 @@ function playGame() {
             switch (computerChoice) {
                 case 'scissors':
                     display.innerHTML = '\nYou lose, scissors beats paper';
-                    computerScore++;
+                    incrementScore(computerScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'rock':
                     display.innerHTML = '\nYou win, paper beats rock';
-                    humanScore++;
+                    incrementScore(humanScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'paper':
@@ -110,12 +120,12 @@ function playGame() {
             switch (computerChoice) {
                 case 'rock':
                     display.innerHTML = '\nYou lose, rock beats scissors';
-                    computerScore++;
+                    incrementScore(computerScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'paper':
                     display.innerHTML = '\nYou win, scissors beats paper';
-                    humanScore++;
+                    incrementScore(humanScore);
                     computerChoice = getComputerChoice();
                     break;
                 case 'scissors':
@@ -127,11 +137,11 @@ function playGame() {
             checkRoundOver();
         });  
         
-    }
+    };
 
     playRound(computerChoice);   
     
 
-}
+};
 
 playGame();
